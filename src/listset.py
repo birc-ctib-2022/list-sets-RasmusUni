@@ -16,12 +16,14 @@ class ListSet(Generic[T]):
         """Initialise set with init."""
         ...  # FIXME
 
-        y = list(init)
-        self.data = []
+        y = list(init) #O(init)
+        self.data = []  #O(1)
 
-        for i in y:
-            if i not in self.data:
+        for i in y: #O(y)
+            if i not in self.data: 
                 self.data.append(i)
+        
+        # O(init+y^selv.data) 
                 
     def __contains__(self, x: T) -> bool:
         """Test if x is in set."""
@@ -31,6 +33,8 @@ class ListSet(Generic[T]):
             if x == i:
                 return True
         return False
+
+        #O(selv.data) linear time
 
     def __bool__(self) -> bool:
         """
@@ -46,6 +50,7 @@ class ListSet(Generic[T]):
         else:
             return True
 
+        #O(selv.data) linear time
 
     def add(self, x: T) -> None:
         """Add x to the set."""
@@ -53,12 +58,16 @@ class ListSet(Generic[T]):
 
         if x not in self.data:
             self.data.append(x)
+        
+        #O(selv.data) linear time
 
     def remove(self, x: T) -> None:
         """Remove x from the set."""
         ...  # FIXME
 
         self.data.remove(x)
+
+        #O(selv.data) linear time
     
     def __repr__(self) -> str:
         return f'{self.data}'
